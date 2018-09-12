@@ -1,0 +1,15 @@
+<h1>
+  todo App practice 
+</h1>
+<div>
+  <input type="text" #newTodo>
+  <button (click)="onAdd(newTodo)">Add</button>
+</div>
+<div>
+    <ul>
+        <li  *ngFor="let item of toDoListArray">
+          {{item.todo}}
+          <button (click)="onDeleteTodo(item.$key)">Delete</button>
+        </li>
+      </ul>
+</div>
