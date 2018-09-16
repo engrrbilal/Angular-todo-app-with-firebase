@@ -10,6 +10,8 @@ import { iterateListLike } from '@angular/core/src/change_detection/change_detec
 })
 export class TodoPracticeComponent implements OnInit {
   toDoListArray:any[]
+  editState:boolean=false
+  itemToEdit:any
   constructor(private todoService:TodoService) { }
 
   ngOnInit() {
@@ -32,5 +34,18 @@ export class TodoPracticeComponent implements OnInit {
   onDeleteTodo($key:string){
     console.log($key)
     this.todoService.deleteTodo($key)
+  }
+  editTodo(item:string){
+    this.editState=true
+    this.itemToEdit=item
+    console.log(item)
+  }
+  onUpdate(item){
+    console.log(item)
+    this.todoService.updateTodo(item)
+  }
+  clearState(){
+      this.editState=false;
+      this.itemToEdit=null
   }
 }

@@ -18,4 +18,8 @@ todoList:AngularFireList<any>
   deleteTodo($key:string){
     this.todoList.remove($key)
   }
+  updateTodo(item:any){
+    this.firebasedb.object('/Todos/' + item.$key)
+    .update({ todo: item.todo});
+  }
 }
