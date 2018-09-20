@@ -1,0 +1,39 @@
+
+<!-- <div>
+  <input type="text" #newTodo>
+  <button (click)="onAdd(newTodo)" name="todo">Add</button>
+</div> -->
+<div>
+    <div class="addItemBox">
+            <h1>Todo App</h1>
+            <input type="text" placeholder="Add Todo" #newTodo class="inputText1">
+            <button (click)="onAdd(newTodo)" name="todo" id="submit">Add</button>
+    </div>
+    <div *ngIf="toDoListArray?.length > 0;else noItems" class="items">
+        <ul *ngFor="let item of toDoListArray">
+                <li>
+                <span id="itemDisplay">{{item.todo}}</span>
+                <button (click)="editTodo(item)" id="edit">Edit</button>
+                <div *ngIf="itemToEdit===item && itemToEdit.$key === item.$key">
+                    <form (ngSubmit)="onUpdate(item)">
+                        <div>
+                            <input type="text" [(ngModel)]="item.todo" name="todo" class="inputText1">
+                            <input type="submit" value="update" id="update">
+                            <button (click)="onDeleteTodo(item)" id="delete">Delete</button>
+                            <button (click)="clearState(item)" id="cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+        
+                </li>
+            </ul>
+</div>
+</div>
+
+
+<ng-template #noItems>
+    <div id="noitem">
+        <hr>
+        <p>There is no item to show in a list</p>
+    </div>
+</ng-template>

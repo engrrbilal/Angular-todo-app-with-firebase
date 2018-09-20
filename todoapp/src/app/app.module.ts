@@ -7,12 +7,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { TodoPracticeComponent } from './todo-practice/todo-practice.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoPracticeComponent
+    TodoComponent,
   ],
   imports: [
     BrowserModule,

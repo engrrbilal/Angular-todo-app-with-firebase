@@ -3,12 +3,12 @@ import { TodoService } from './shared/todo.service';
 import { iterateListLike } from '@angular/core/src/change_detection/change_detection_util';
 
 @Component({
-  selector: 'app-todo-practice',
-  templateUrl: './todo-practice.component.html',
-  styleUrls: ['./todo-practice.component.css'],
+  selector: 'app-todo',
+  templateUrl: './todo.component.html',
+  styleUrls: ['./todo.component.css'],
   providers : [TodoService]
 })
-export class TodoPracticeComponent implements OnInit {
+export class TodoComponent implements OnInit {
   toDoListArray:any[]
   editState:boolean=false
   itemToEdit:any
@@ -31,16 +31,17 @@ export class TodoPracticeComponent implements OnInit {
     this.todoService.addTodo(newTodo.value)
     newTodo.value=null
   }
-  onDeleteTodo($key:string){
-    console.log($key)
-    this.todoService.deleteTodo($key)
+  onDeleteTodo(item:any){
+    console.log(item)
+    this.todoService.deleteTodo(item)
+    this.clearState()
   }
   editTodo(item:string){
     this.editState=true
     this.itemToEdit=item
     console.log(item)
   }
-  onUpdate(item){
+  onUpdate(item:any){
     console.log(item)
     this.todoService.updateTodo(item)
   }
